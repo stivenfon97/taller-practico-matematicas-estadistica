@@ -4,8 +4,8 @@ const inputDiscount = document.querySelector('#discount');
 const result = document.querySelector('#result');
 const cupon = document.querySelector('#discountO');
 const inputPriceP = document.querySelector('#priceO');
-const pay = document.querySelector('#pagar');
 const nameCup = document.querySelector('#nameCup');
+const pay = document.querySelector('#pagar');
 
 btn.addEventListener('click', cup);
 //cupon.addEventListener('change', cupones);
@@ -57,11 +57,56 @@ function cupones(c) {
     
 }
 
+const cuponera = [];
+    cuponera.push({
+        name: 'primer',
+        discount: 30,
+        limit: 50,
+    });
+
+    cuponera.push({
+        name: 'segundo',
+        discount: 20,
+    });
+
+    cuponera.push({
+        name: 'cincuenta',
+        discount: 50,
+    });
+
 function cup(){
 
     const price = Number(inputPriceP.value);
+    const coupon = nameCup.value;
 
-    const descuentos = {
+    if(!price || !coupon){
+        pay.innerText = "No existe CUPON";
+        return;
+    }
+
+    let descuento;
+
+    function corre(cuponElement){
+       return cuponElement.name == coupon;
+    }
+
+    //console.log(descuento2);
+
+    const couponInArray = cuponera.find(corre);
+
+    //if(couponInArray.length > 0){ sirve para validar con filter
+    if(couponInArray){
+        descuento = couponInArray.discount;
+    }else{
+        pay.innerText = 'El cupon no es valido';
+        return;
+    }
+
+    const newPrice = (price * (100 - descuento)) / 100;
+
+    pay.innerText = 'El nuevo precio con descuento es $' + newPrice;
+
+    /* const descuentos = {
         primer: 10,
         segundo: 20,
         tercer: 30,
@@ -74,26 +119,39 @@ function cup(){
         if(cupon == des) var porcentaje = descuentos[des];
     }
 
-    pay.textContent = (price * (100-porcentaje))/100;
+    pay.textContent = (price * (100-porcentaje))/100; */
     /* OTRA FORMA */
-    if(descuentos[cupon]){
+    /* if(descuentos[cupon]){
        des = descuentos[cupon];
-    }
+    } */
     /* OTRA FORMA */
-    const desList = [];
-    desList.push({
-        name: 'primer',
-        discount: 30,
-        limit: 50,
-    });
-
-    desList.push({
-        name: 'segundo',
-        discount: 20,
-    });
-
-    desList.push({
-        name: 'cincuenta',
-        discount: 50,
-    });
+    
 }; 
+
+const users = [];
+    users.push({ id: 123, name: 'Juanito Alcachofa' });
+    users.push({ id: 456, name: 'Juanita Alcaparra' });
+
+function solution(users, id){
+
+    const usuario = users.find(function (user) {
+        return user.id == id
+    });
+
+    if(usuario) return usuario.name;
+
+    if(!usuario) return false;
+}
+
+let datos = [425,325,500,675,780,900];
+
+function promedio() {
+
+    let suma = 0;
+    let cantidad = datos.length;
+    for(let i=0; i<datos.length; i++){
+        suma += datos[i];
+    }
+
+    return suma/cantidad;
+}
