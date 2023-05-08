@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller de matematicas</title>
+    <title>Calcula Descuentos</title>
 </head>
 <body>
-    <h1>taller Formulas Basicas</h1>
-    <p>Aprendiendo matematicas usando codigo JavaScript</p>
+    <h1>Calcula Descuentos</h1>
+    <p>Calcular precios con descuentos en JavaScript</p>
 
     <ul>
         <li><a href="math.html">Formulas Basicas</a></li>
@@ -16,6 +16,32 @@
         <li><a href="platzimath.html">Estadística básica</a></li>
         <li><a href="salarios.html">Análisis salarial</a></li>
     </ul>
+    <label for="price">Precio Original</label>
+    <input type="number" id="price">
+    <label for="discount">Descuento</label>
+    <input type="number" id="discount">
+    <!-- <button id="calcular">Calcular Descuento</button> -->
+
+    <p id="result"></p>
+
+    <hr>
+    <h1>Cupones Platzi</h1>
+    <label for="price">Precio Original</label>
+    <input type="number" id="priceO">
+    <label for="discount">Cupon</label>
+    <select id="discountO">
+        <option value="1">10%</option>
+        <option value="2">20%</option>
+        <option value="3">30%</option>
+        <option value="5">50%</option>
+    </select>
+
+    <label for="">Nombre del cupon</label>
+    <input type="text" id="nameCup">
+
+    <h3 id="pagar"></h3>
+
+    <button id="calcular">Calcular Descuento</button>
     <script src="descuentos.js"></script>
 </body>
 </html>
